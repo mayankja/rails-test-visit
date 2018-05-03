@@ -1,0 +1,24 @@
+
+h4= "Import CSV"
+
+div class="center-div form-inline"
+	= form_tag import_users_path, multipart: true do
+	  = file_field_tag :file
+	  = submit_tag "Import", class: "btn btn-primary"
+br/
+
+div class="center-div"  
+	table class="table table-striped" id = "product_lists"
+	  thead
+	    tr
+	      th Name
+	      th Date
+	      th Number
+	      th Description
+	  tbody
+	    - @users.each do |user|
+	      tr
+	        td= user.name
+	        td= user.date
+	        td= user.number
+	        td= user.description
