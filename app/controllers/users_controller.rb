@@ -5,9 +5,10 @@ class UsersController < ApplicationController
 
   def import
     if User.import(params[:file])
-      redirect_to root_url, notice: 'Data uploaded successfully'
+      flash[:notice] = 'Data uploaded successfully'
     else
-      redirect_to root_url, notice: 'File not found'
+      flash[:error] = 'File not found'
     end
+    redirect_to root_url
   end
 end
